@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "365920602899",
+    "project_id": "phoneopia-14cc8",
+    "storage_bucket": "phoneopia-14cc8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365920602899:android:5b278fec4f98e80e43a8e6",
+        "android_client_info": {
+          "package_name": "com.phoneopia.phoneopia_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGerYOqYrBnDTg-I_ZqkE_DO0n_-8QvyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

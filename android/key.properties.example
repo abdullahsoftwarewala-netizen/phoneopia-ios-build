@@ -1,0 +1,17 @@
+# Copy to key.properties (NEVER commit key.properties or *.jks)
+# Rotate passwords if they were ever exposed in a scan or git history.
+#
+# Local file example:
+#   storePassword=YOUR_NEW_STRONG_PASSWORD
+#   keyPassword=YOUR_NEW_STRONG_PASSWORD
+#   keyAlias=phoneopia
+#   storeFile=app/phoneopia-release.jks
+#
+# CI/CD: set env vars instead (see app/build.gradle.kts):
+#   PHONEOPIA_STORE_PASSWORD, PHONEOPIA_KEY_PASSWORD,
+#   PHONEOPIA_KEY_ALIAS, PHONEOPIA_STORE_FILE
+
+storePassword=CHANGE_ME
+keyPassword=CHANGE_ME
+keyAlias=phoneopia
+storeFile=app/phoneopia-release.jks

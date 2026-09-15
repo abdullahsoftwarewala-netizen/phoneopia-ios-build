@@ -1,0 +1,4 @@
+# Copy to local.properties (never commit local.properties).
+# Android Studio / Flutter fill these automatically on first build.
+sdk.dir=C:\\path\\to\\Android\\Sdk
+flutter.sdk=C:\\path\\to\\flutter

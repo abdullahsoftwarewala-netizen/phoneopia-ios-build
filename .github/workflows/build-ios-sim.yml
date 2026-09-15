@@ -1,0 +1,36 @@
+name: Build iOS Simulator App
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+jobs:
+  build-ios-sim:
+    runs-on: macos-14
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.41.9'
+          channel: stable
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build iOS Simulator
+        run: flutter build ios --simulator --debug
+
+      - name: Package as zip
+        run: |
+          cd build/ios/iphonesimulator
+          zip -r ../../../phoneopia-ios-sim.zip Runner.app
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: phoneopia-ios-simulator
+          path: phoneopia-ios-sim.zip

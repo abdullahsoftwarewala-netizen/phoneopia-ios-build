@@ -1,0 +1,12 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- White chat-bubble silhouette (Android tints this to the status-bar colour).
+         Three dots are cut out via evenOdd so it reads as the Phoneopia logo. -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M4,2.5 L20,2.5 A2.5,2.5 0 0 1 22.5,5 L22.5,15 A2.5,2.5 0 0 1 20,17.5 L9.5,17.5 L5.5,21.5 L5.5,17.5 L4,17.5 A2.5,2.5 0 0 1 1.5,15 L1.5,5 A2.5,2.5 0 0 1 4,2.5 Z M7,10 m-1.35,0 a1.35,1.35 0 1 0 2.7,0 a1.35,1.35 0 1 0 -2.7,0 M12,10 m-1.35,0 a1.35,1.35 0 1 0 2.7,0 a1.35,1.35 0 1 0 -2.7,0 M17,10 m-1.35,0 a1.35,1.35 0 1 0 2.7,0 a1.35,1.35 0 1 0 -2.7,0" />
+</vector>
