@@ -21,19 +21,31 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Build iOS Simulator (profile mode)
-        run: flutter build ios --simulator --profile --no-tree-shake-icons
+      - name: Build iOS Simulator
+        run: flutter build ios --simulator --debug --no-tree-shake-icons
 
-      - name: Strip and shrink
+      - name: Strip binaries and shrink
         run: |
           cd build/ios/iphonesimulator/Runner.app
           rm -f Runner.debug.dylib __preview.dylib 2>/dev/null || true
           strip -x Runner 2>/dev/null || true
+          find . -name "*.dylib" -exec strip -x {} \; 2>/dev/null || true
+          rm -rf _CodeSignature 2>/dev/null || true
+          rm -rf PlugIns 2>/dev/null || true
+          find . -name "*.png" -path "*/Assets.car" -prune -o -name "*.png" -delete 2>/dev/null || true
 
       - name: Package zip
         run: |
           cd build/ios/iphonesimulator
           zip -r -9 ../../../phoneopia-ios-sim.zip Runner.app
+
+      - name: Check size
+        run: |
+          SIZE=$(stat -f%z phoneopia-ios-sim.zip)
+          echo "ZIP size: $SIZE bytes ($((SIZE/1024/1024)) MB)"
+          if [ $SIZE -gt 52428800 ]; then
+            echo "WARNING: ZIP exceeds 50MB limit"
+          fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
