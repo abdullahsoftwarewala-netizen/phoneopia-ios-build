@@ -21,18 +21,16 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Build iOS Simulator (release)
-        run: flutter build ios --simulator --release --no-tree-shake-icons
+      - name: Build iOS Simulator (profile mode)
+        run: flutter build ios --simulator --profile --no-tree-shake-icons
 
-      - name: Strip debug symbols
+      - name: Strip and shrink
         run: |
           cd build/ios/iphonesimulator/Runner.app
-          find . -name "*.dylib" -exec strip -x {} \; 2>/dev/null || true
-          find . -name "Runner" -exec strip -x {} \; 2>/dev/null || true
-          rm -f Runner.debug.dylib
-          rm -f __preview.dylib
+          rm -f Runner.debug.dylib __preview.dylib 2>/dev/null || true
+          strip -x Runner 2>/dev/null || true
 
-      - name: Package as zip
+      - name: Package zip
         run: |
           cd build/ios/iphonesimulator
           zip -r -9 ../../../phoneopia-ios-sim.zip Runner.app
